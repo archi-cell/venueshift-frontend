@@ -1,0 +1,27 @@
+.create-event{
+max-width:500px;
+margin:auto;
+margin-top:60px;
+background:#1e293b;
+padding:30px;
+border-radius:10px;
+}
+
+.create-event input{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:none;
+border-radius:6px;
+background:#0f172a;
+color:white;
+}
+
+.create-event button{
+width:100%;
+padding:12px;
+background:#38bdf8;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
