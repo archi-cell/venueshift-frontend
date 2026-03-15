@@ -1,0 +1,300 @@
+/* ═══════════════════════════════════════════════════════════
+   SHARED PAGE LAYOUT
+   Used by: Events, Schedule, Staff, Notifications, Dashboard
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Page Container ────────────────────────────────────── */
+.container {
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    padding: 40px 48px 64px;
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ─── Page Heading ──────────────────────────────────────── */
+.container>h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(240, 248, 232, 0.9);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.container>h2::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 2px;
+    margin-top: 10px;
+    margin-bottom: 32px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.45), transparent);
+    border-radius: 2px;
+}
+
+/* ─── Cards ─────────────────────────────────────────────── */
+.card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* top accent */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 2px;
+    background: rgba(160, 220, 160, 0.6);
+}
+
+/* Card heading */
+.card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(240, 248, 232, 0.9);
+    margin-bottom: 8px;
+}
+
+/* Card body */
+.card p {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.38);
+    letter-spacing: 0.05em;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Empty text */
+.container>p {
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    margin-top: 60px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NOTIFICATIONS
+   ═══════════════════════════════════════════════════════════ */
+
+.notifications .card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 22px;
+    transition: all .25s ease;
+}
+
+.notifications .card:hover {
+    transform: translateX(6px);
+}
+
+/* notification dot */
+.notifications .card::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 6px;
+    background: rgba(160, 220, 160, 0.6);
+    box-shadow: 0 0 8px rgba(160, 220, 160, 0.3);
+}
+
+/* unread animation */
+.notifications .card:first-child::before {
+    background: rgba(160, 220, 160, 1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0% {
+        opacity: 1;
+        transform: scale(1)
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(.8)
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCHEDULE TIMELINE
+   ═══════════════════════════════════════════════════════════ */
+
+.schedule {
+    padding-left: 80px;
+    position: relative;
+}
+
+/* vertical timeline */
+.schedule::after {
+    content: '';
+    position: absolute;
+    top: 110px;
+    bottom: 60px;
+    left: 60px;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* schedule card */
+.schedule .card {
+    margin-left: 30px;
+}
+
+.schedule .card::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(160, 220, 160, 0.7);
+}
+
+.schedule .card::after {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 50%;
+    width: 28px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   STAFF GRID
+   ═══════════════════════════════════════════════════════════ */
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.staff-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 22px;
+    transition: all .25s ease;
+}
+
+.staff-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.staff-card h3 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: rgba(240, 248, 232, 0.9);
+}
+
+.staff-role {
+    display: inline-block;
+    font-size: 10px;
+    margin-top: 10px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    background: rgba(160, 220, 160, 0.1);
+    border: 1px solid rgba(160, 220, 160, 0.3);
+    color: rgba(160, 220, 160, 0.9);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CREATE EVENT PAGE
+   ═══════════════════════════════════════════════════════════ */
+
+.create-event-form {
+    max-width: 600px;
+}
+
+.create-event-form input,
+.create-event-form select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: white;
+    font-family: 'Lora', serif;
+}
+
+.create-event-form button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(160, 220, 160, 0.8);
+    color: #111;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.create-event-form button:hover {
+    background: rgba(160, 220, 160, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+
+@media(max-width:768px) {
+
+    .container {
+        padding: 28px 20px 48px;
+    }
+
+    .staff-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule {
+        padding-left: 52px;
+    }
+
+    .schedule::after {
+        left: 36px;
+    }
+
+    .schedule .card {
+        margin-left: 20px;
+    }
+
+}

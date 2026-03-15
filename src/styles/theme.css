@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+/* ═══════════════════════════════════════════════════════════
+   VENUESHIFT — CHALKBOARD THEME
+   GLOBAL BASE  (import this in index.js / App.jsx)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Hard Reset ────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ─── Root Sizing — fill the whole screen ───────────────── */
+html {
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Lora', serif;
+    background: #2B3A2B;
+    color: rgba(240, 248, 232, 0.85);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ─── Chalkboard texture (applied globally) ─────────────── */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        repeating-linear-gradient(0deg,
+            rgba(255, 255, 255, 0.011) 0px,
+            rgba(255, 255, 255, 0.011) 1px,
+            transparent 1px,
+            transparent 36px),
+        repeating-linear-gradient(90deg,
+            rgba(255, 255, 255, 0.007) 0px,
+            rgba(255, 255, 255, 0.007) 1px,
+            transparent 1px,
+            transparent 36px),
+        radial-gradient(ellipse at 50% 40%,
+            transparent 30%,
+            rgba(15, 22, 15, 0.5) 100%);
+}
+
+/* ─── Chalk border frame ────────────────────────────────── */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.09);
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 0;
+}

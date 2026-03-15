@@ -1,0 +1,353 @@
+/* ═══════════════════════════════════════════════════════════
+   SHARED PAGE LAYOUT
+   Used by: Events, Schedule, Staff, Notifications
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Page Container ────────────────────────────────────── */
+.container {
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    padding: 40px 48px 64px;
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ─── Page Heading ──────────────────────────────────────── */
+.container>h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(240, 248, 232, 0.9);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.container>h2::after {
+    content: '';
+    display: block;
+    width: 52px;
+    height: 2px;
+    margin-top: 10px;
+    margin-bottom: 32px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.45), transparent);
+    border-radius: 2px;
+}
+
+/* ─── Cards ─────────────────────────────────────────────── */
+.card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.065);
+}
+
+/* Green chalk top-left accent */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 2px;
+    background: rgba(160, 220, 160, 0.5);
+}
+
+/* Card heading */
+.card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(240, 248, 232, 0.88);
+    letter-spacing: 0.4px;
+    margin-bottom: 8px;
+}
+
+/* Card body text */
+.card p {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.36);
+    letter-spacing: 0.06em;
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* ─── Loading / Empty ───────────────────────────────────── */
+.container>p {
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.28);
+    text-align: center;
+    margin-top: 60px;
+    letter-spacing: 0.1em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NOTIFICATIONS — card variant with dot + left border
+   ═══════════════════════════════════════════════════════════ */
+
+.notifications-page .card,
+.container.notifications .card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(240, 248, 232, 0.72);
+    letter-spacing: 0.05em;
+    line-height: 1.7;
+    padding: 18px 22px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.notifications-page .card:hover,
+.container.notifications .card:hover {
+    transform: translateX(5px);
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.065);
+}
+
+/* Green dot */
+.notifications-page .card::before,
+.container.notifications .card::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 5px;
+    background: rgba(160, 220, 160, 0.6);
+    box-shadow: 0 0 8px rgba(160, 220, 160, 0.25);
+}
+
+/* First card = unread */
+.notifications-page .card:first-of-type::before,
+.container.notifications .card:first-of-type::before {
+    background: rgba(160, 220, 160, 1);
+    box-shadow: 0 0 10px rgba(160, 220, 160, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.55;
+        transform: scale(0.82);
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SCHEDULE — timeline layout
+   ═══════════════════════════════════════════════════════════ */
+
+.schedule-page .container,
+.container.schedule {
+    padding-left: 80px;
+    position: relative;
+}
+
+/* Vertical rail */
+.schedule-page .container::after,
+.container.schedule::after {
+    content: '';
+    position: absolute;
+    top: 110px;
+    bottom: 60px;
+    left: 60px;
+    width: 1px;
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(255, 255, 255, 0.1) 8%,
+            rgba(255, 255, 255, 0.1) 92%,
+            transparent);
+    z-index: 0;
+}
+
+.schedule-page .container>h2,
+.container.schedule>h2 {
+    padding-left: 0;
+}
+
+.schedule-page .card,
+.container.schedule .card {
+    margin-left: 28px;
+    position: relative;
+    overflow: visible;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.schedule-page .card:hover,
+.container.schedule .card:hover {
+    transform: translateX(5px);
+}
+
+/* Timeline node */
+.schedule-page .card::before,
+.container.schedule .card::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(160, 220, 160, 0.65);
+    box-shadow: 0 0 8px rgba(160, 220, 160, 0.25);
+    z-index: 2;
+}
+
+/* Connector line */
+.schedule-page .card::after,
+.container.schedule .card::after {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent);
+}
+
+.schedule-page .card p:first-of-type,
+.container.schedule .card p:first-of-type {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   STAFF — grid layout
+   ═══════════════════════════════════════════════════════════ */
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+.staff-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 22px 20px 18px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.staff-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.065);
+}
+
+.staff-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 2px;
+    background: rgba(160, 220, 160, 0.5);
+}
+
+.staff-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(240, 248, 232, 0.88);
+    letter-spacing: 0.4px;
+    margin-bottom: 6px;
+}
+
+.staff-card p {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.34);
+    letter-spacing: 0.06em;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.staff-role {
+    display: inline-block;
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    font-style: italic;
+    color: rgba(160, 220, 160, 0.82);
+    background: rgba(160, 220, 160, 0.08);
+    border: 1px solid rgba(160, 220, 160, 0.2);
+    border-radius: 3px;
+    padding: 3px 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 2px;
+    display: block;
+    width: fit-content;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .container {
+        padding: 28px 20px 48px;
+        max-width: 100%;
+    }
+
+    .staff-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-page .container,
+    .container.schedule {
+        padding-left: 52px;
+    }
+
+    .schedule-page .container::after,
+    .container.schedule::after {
+        left: 36px;
+    }
+
+    .schedule-page .card,
+    .container.schedule .card {
+        margin-left: 20px;
+    }
+
+    .schedule-page .card::before,
+    .container.schedule .card::before {
+        left: -26px;
+        width: 8px;
+        height: 8px;
+    }
+
+    .schedule-page .card::after,
+    .container.schedule .card::after {
+        left: -18px;
+        width: 18px;
+    }
+}

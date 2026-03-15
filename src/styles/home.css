@@ -1,0 +1,177 @@
+/* ═══════════════════════════════════════════════════════════
+   HOME PAGE
+   ═══════════════════════════════════════════════════════════ */
+
+/* Outer wrapper — the root <div> in Home.jsx */
+.home-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Hero section */
+.home {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 60px);
+}
+
+/* Centered glow */
+.home::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%,
+            rgba(160, 220, 160, 0.05) 0%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ─── Heading ───────────────────────────────────────────── */
+.home h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(44px, 9vw, 88px);
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(240, 248, 232, 0.93);
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 16px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    text-shadow:
+        1px 1px 0 rgba(255, 255, 255, 0.07),
+        -1px -1px 0 rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(160, 220, 150, 0.1);
+}
+
+.home h1 span {
+    color: rgba(160, 220, 160, 0.92);
+}
+
+/* ─── Chalk rule + subtitle ─────────────────────────────── */
+.home p {
+    font-family: 'Lora', serif;
+    font-size: clamp(13px, 1.8vw, 16px);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.36);
+    letter-spacing: 0.14em;
+    text-align: center;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+}
+
+.home p::before {
+    content: '';
+    display: block;
+    width: 72px;
+    height: 1.5px;
+    margin: 0 auto 14px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4) 30%,
+            rgba(255, 255, 255, 0.55) 50%,
+            rgba(255, 255, 255, 0.4) 70%,
+            transparent);
+    border-radius: 2px;
+}
+
+/* ─── Button Row ────────────────────────────────────────── */
+.btn-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+}
+
+/* Base button */
+.home button,
+.btn-row button {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(13px, 1.5vw, 15px);
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    border-radius: 5px;
+    padding: 13px 36px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+}
+
+/* Login — ghost */
+.home button:first-of-type,
+.btn-row button:first-of-type {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.48);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+}
+
+.home button:first-of-type:hover,
+.btn-row button:first-of-type:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.38);
+    color: rgba(255, 255, 255, 0.78);
+    transform: translateY(-2px);
+}
+
+/* Create Account — solid */
+.home button:last-of-type,
+.btn-row button:last-of-type {
+    background: rgba(240, 248, 232, 0.93);
+    color: #1e2e1e;
+    border: 1.5px solid rgba(240, 248, 232, 0.93);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.home button:last-of-type:hover,
+.btn-row button:last-of-type:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.home button:active,
+.btn-row button:active {
+    transform: translateY(0) !important;
+    box-shadow: none !important;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .home {
+        padding: 36px 20px;
+        min-height: calc(100vh - 54px);
+    }
+
+    .btn-row {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .home button,
+    .btn-row button {
+        width: 100%;
+        text-align: center;
+        padding: 13px 24px;
+    }
+}

@@ -1,0 +1,233 @@
+/* ═══════════════════════════════════════════════════════════
+   REGISTER PAGE — Chalkboard Theme
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Full screen centered layout ──────────────────────── */
+.auth-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Card ──────────────────────────────────────────────── */
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.11);
+    border-radius: 12px;
+    padding: 48px 44px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Green chalk accent line at top of card */
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(160, 220, 160, 0.5) 30%,
+            rgba(160, 220, 160, 0.65) 50%,
+            rgba(160, 220, 160, 0.5) 70%,
+            transparent);
+}
+
+/* Subtle inner glow */
+.auth-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%,
+            rgba(160, 220, 160, 0.04) 0%,
+            transparent 60%);
+    pointer-events: none;
+}
+
+/* ─── Heading ───────────────────────────────────────────── */
+.auth-card h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(240, 248, 232, 0.92);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    text-shadow:
+        1px 1px 0 rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(160, 220, 150, 0.1);
+}
+
+/* Chalk rule under heading */
+.auth-card h2::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    margin: 10px auto 28px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    border-radius: 2px;
+}
+
+/* ─── Form ──────────────────────────────────────────────── */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Inputs ────────────────────────────────────────────── */
+form input {
+    width: 100%;
+    padding: 13px 16px;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(240, 248, 232, 0.85);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid rgba(255, 255, 255, 0.13);
+    border-radius: 7px;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    -webkit-text-fill-color: rgba(240, 248, 232, 0.85);
+    caret-color: rgba(160, 220, 160, 0.9);
+}
+
+form input::placeholder {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.22);
+    letter-spacing: 0.06em;
+}
+
+form input:hover:not(:focus) {
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+form input:focus {
+    border-color: rgba(160, 220, 160, 0.5);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 0 3px rgba(160, 220, 160, 0.08);
+}
+
+/* Chrome autofill fix */
+form input:-webkit-autofill,
+form input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #2e3e2e inset;
+    -webkit-text-fill-color: rgba(240, 248, 232, 0.85);
+    transition: background-color 5000s;
+}
+
+/* ─── Submit Button ─────────────────────────────────────── */
+form button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 6px;
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #1e2e1e;
+    background: rgba(240, 248, 232, 0.93);
+    border: 1.5px solid rgba(240, 248, 232, 0.93);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.28);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shimmer sweep */
+form button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.25),
+            transparent);
+    transition: left 0.35s ease;
+}
+
+form button:hover::after {
+    left: 160%;
+}
+
+form button:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.3);
+}
+
+form button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* ─── Footer note ───────────────────────────────────────── */
+.auth-card>p {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.28);
+    text-align: center;
+    margin-top: 22px;
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+}
+
+.auth-card>p a {
+    color: rgba(160, 220, 160, 0.65);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.auth-card>p a:hover {
+    color: rgba(160, 220, 160, 1);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-underline-offset: 3px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 500px) {
+    .auth-card {
+        padding: 36px 24px 30px;
+        border-radius: 10px;
+    }
+
+    .auth-card h2 {
+        font-size: 26px;
+    }
+
+    form input,
+    form button {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+}
